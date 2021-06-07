@@ -19,7 +19,10 @@ class MyApp extends StatelessWidget {
             fontFamily: 'OpenSans',
             fontWeight: FontWeight.bold,
             fontSize: 18.0,
-          )
+          ),
+          button: TextStyle(
+            color: Colors.white,
+          ),
         ),
         fontFamily: 'Quicksand',
         appBarTheme: AppBarTheme(
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'OpenSans', 
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
-            )
+            ),
           )
         )
       ),

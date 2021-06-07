@@ -15,11 +15,10 @@ class _NewTransactionsState extends State<NewTransactions> {
   final amountController = TextEditingController();
 
   void submitData() {
-
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if(enteredTitle.isEmpty || enteredAmount <= 0){
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
 
@@ -38,27 +37,47 @@ class _NewTransactionsState extends State<NewTransactions> {
         child: Container(
           padding: EdgeInsets.all(10),
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                TextField(
-                  decoration: InputDecoration(labelText: 'Title'),
-                  controller: titleController,
-                  onSubmitted: (_) => submitData(),
-                ),
-                TextField(
-                  decoration: InputDecoration(labelText: 'Amount'),
-                  controller: amountController,
-                  keyboardType: TextInputType.number,
-                  onSubmitted: (_) => submitData(),
-                ),
-                TextButton(
-                  onPressed: submitData,
-                  child: Text('Add Transaction'),
-                  style: TextButton.styleFrom(
-                    primary: Colors.purple.shade700,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                    controller: titleController,
+                    onSubmitted: (_) => submitData(),
                   ),
-                )
-              ]),
-        ));
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    controller: amountController,
+                    keyboardType: TextInputType.number,
+                    onSubmitted: (_) => submitData(),
+                  ),
+                  Container(
+                    height: 70,
+                    child: Row(
+                      children: <Widget>[
+                        Text('No date chosen!'),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text('Choose Date'),
+                          style: TextButton.styleFrom(
+                              primary: Theme.of(context).primaryColor,
+                              textStyle:
+                                  TextStyle(fontWeight: FontWeight.bold)),
+                        )
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: submitData,
+                    child: Text(
+                      'Add Transaction',
+                      style: TextStyle(color: Colors.white)
+                    ),
+                    style: TextButton.styleFrom(
+                      primary: Theme.of(context).primaryColor,
+                    ),
+                  )
+                ]),
+          ),
+        );
   }
 }
