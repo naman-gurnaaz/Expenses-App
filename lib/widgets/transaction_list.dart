@@ -10,9 +10,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      child: transactions.isEmpty
+    return transactions.isEmpty
           ? Column(
               children: <Widget>[
                 Text(
@@ -53,7 +51,15 @@ class TransactionList extends StatelessWidget {
                     subtitle: Text(DateFormat.yMMMEd().format(
                       transactions[index].date,
                     )),
-                    trailing: IconButton(
+                    trailing:MediaQuery.of(context).size.width > 460 ? TextButton.icon(
+                      icon: Icon(Icons.delete),
+                      onPressed: () => deleteTx(transactions[index].id),
+                      label: Text('Delete!',),
+                      style: TextButton.styleFrom(
+                        primary: Theme.of(context).errorColor,
+                        
+                      )
+                    ): IconButton(
                       icon: Icon(Icons.delete),
                       onPressed: () => deleteTx(transactions[index].id),
                       color: Theme.of(context).errorColor,
@@ -62,7 +68,6 @@ class TransactionList extends StatelessWidget {
                 );
               },
               itemCount: transactions.length,
-            ),
     );
   }
 }
